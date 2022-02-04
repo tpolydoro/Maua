@@ -4,104 +4,104 @@ import { RSIStrategy } from '../strategies/RSI.js'
 import { StochasticRSIStrategy } from '../strategies/StochasticRSI.js'
 
 export async function testVariations() {
-    await testSMA()
-    await testRSI()
-    await testStochasticRSI()
+    //await testSMA(100)
+    await testRSI(800)
+    await testStochasticRSI(800)
 }
 
-export async function testStochasticRSI() {
-    let candles = await getCandles('ETH-BRL', '1d', 400)
+export async function testStochasticRSI(count) {
+    let candles = await getCandles('ETH-BRL', '1d', count)
     let stochasticRSI = new StochasticRSIStrategy({ periods: 10, startingValues: [], verbose: false })
-    console.log('StochasticRSI 10 Resolução: 1d Quantidade: 400', getProfit(stochasticRSI, candles, 100000, false, '1d'))
+    console.log('StochasticRSI 10 Resolução: 1d Quantidade:', count, 'Resultado por dia:', getProfit(stochasticRSI, candles, 100000, false, '1d'))
 
     stochasticRSI = new StochasticRSIStrategy({ periods: 14, startingValues: [], verbose: false })
-    console.log('StochasticRSI 14 Resolução: 1d Quantidade: 400', getProfit(stochasticRSI, candles, 100000, false, '1d'))
+    console.log('StochasticRSI 14 Resolução: 1d Quantidade:', count, 'Resultado por dia:', getProfit(stochasticRSI, candles, 100000, false, '1d'))
 
     stochasticRSI = new StochasticRSIStrategy({ periods: 20, startingValues: [], verbose: false })
-    console.log('StochasticRSI 20 Resolução: 1d Quantidade: 400', getProfit(stochasticRSI, candles, 100000, false, '1d'))
+    console.log('StochasticRSI 20 Resolução: 1d Quantidade:', count, 'Resultado por dia:', getProfit(stochasticRSI, candles, 100000, false, '1d'))
 
-    candles = await getCandles('ETH-BRL', '1h', 400)
+    candles = await getCandles('ETH-BRL', '1h', count)
     stochasticRSI = new StochasticRSIStrategy({ periods: 10, startingValues: [], verbose: false })
-    console.log('StochasticRSI 10 Resolução: 1h Quantidade: 400', getProfit(stochasticRSI, candles, 100000, false, '1h'))
+    console.log('StochasticRSI 10 Resolução: 1h Quantidade:', count, 'Resultado por dia:', getProfit(stochasticRSI, candles, 100000, false, '1h'))
 
     stochasticRSI = new StochasticRSIStrategy({ periods: 14, startingValues: [], verbose: false })
-    console.log('StochasticRSI 14 Resolução: 1h Quantidade: 400', getProfit(stochasticRSI, candles, 100000, false, '1h'))
+    console.log('StochasticRSI 14 Resolução: 1h Quantidade:', count, 'Resultado por dia:', getProfit(stochasticRSI, candles, 100000, false, '1h'))
 
     stochasticRSI = new StochasticRSIStrategy({ periods: 20, startingValues: [], verbose: false })
-    console.log('StochasticRSI 20 Resolução: 1h Quantidade: 400', getProfit(stochasticRSI, candles, 100000, false, '1h'))
+    console.log('StochasticRSI 20 Resolução: 1h Quantidade:', count, 'Resultado por dia:', getProfit(stochasticRSI, candles, 100000, false, '1h'))
 
-    candles = await getCandles('ETH-BRL', '15m', 400)
+    candles = await getCandles('ETH-BRL', '15m', count)
     stochasticRSI = new StochasticRSIStrategy({ periods: 10, startingValues: [], verbose: false })
-    console.log('StochasticRSI 10 Resolução: 15m Quantidade: 400', getProfit(stochasticRSI, candles, 100000, false, '15m'))
+    console.log('StochasticRSI 10 Resolução: 15m Quantidade:', count, 'Resultado por dia:', getProfit(stochasticRSI, candles, 100000, false, '15m'))
 
     stochasticRSI = new StochasticRSIStrategy({ periods: 14, startingValues: [], verbose: false })
-    console.log('StochasticRSI 14 Resolução: 15m Quantidade: 400', getProfit(stochasticRSI, candles, 100000, false, '15m'))
+    console.log('StochasticRSI 14 Resolução: 15m Quantidade:', count, 'Resultado por dia:', getProfit(stochasticRSI, candles, 100000, false, '15m'))
 
     stochasticRSI = new StochasticRSIStrategy({ periods: 20, startingValues: [], verbose: false })
-    console.log('StochasticRSI 20 Resolução: 15m Quantidade: 400', getProfit(stochasticRSI, candles, 100000, false, '15m'))
+    console.log('StochasticRSI 20 Resolução: 15m Quantidade:', count, 'Resultado por dia:', getProfit(stochasticRSI, candles, 100000, false, '15m'))
 }
 
-export async function testRSI() {
-    let candles = await getCandles('ETH-BRL', '1d', 400)
+export async function testRSI(count) {
+    let candles = await getCandles('ETH-BRL', '1d', count)
     let rsiStrategy = new RSIStrategy({ periods: 10, startingValues: [], verbose: false })
-    console.log('RSI 10 Resolução: 1d Quantidade: 400', getProfit(rsiStrategy, candles, 100000, false, '1d'))
+    console.log('RSI 10 Resolução: 1d Quantidade:', count, 'Resultado por dia:', getProfit(rsiStrategy, candles, 100000, false, '1d'))
 
     rsiStrategy = new RSIStrategy({ periods: 14, startingValues: [], verbose: false })
-    console.log('RSI 14 Resolução: 1d Quantidade: 400', getProfit(rsiStrategy, candles, 100000, false, '1d'))
+    console.log('RSI 14 Resolução: 1d Quantidade:', count, 'Resultado por dia:', getProfit(rsiStrategy, candles, 100000, false, '1d'))
 
     rsiStrategy = new RSIStrategy({ periods: 20, startingValues: [], verbose: false })
-    console.log('RSI 20 Resolução: 1d Quantidade: 400', getProfit(rsiStrategy, candles, 100000, false, '1d'))
+    console.log('RSI 20 Resolução: 1d Quantidade:', count, 'Resultado por dia:', getProfit(rsiStrategy, candles, 100000, false, '1d'))
 
-    candles = await getCandles('ETH-BRL', '1h', 400)
+    candles = await getCandles('ETH-BRL', '1h', count)
     rsiStrategy = new RSIStrategy({ periods: 10, startingValues: [], verbose: false })
-    console.log('RSI 10 Resolução: 1h Quantidade: 400', getProfit(rsiStrategy, candles, 100000, false, '1h'))
+    console.log('RSI 10 Resolução: 1h Quantidade:', count, 'Resultado por dia:', getProfit(rsiStrategy, candles, 100000, false, '1h'))
 
     rsiStrategy = new RSIStrategy({ periods: 14, startingValues: [], verbose: false })
-    console.log('RSI 14 Resolução: 1h Quantidade: 400', getProfit(rsiStrategy, candles, 100000, false, '1h'))
+    console.log('RSI 14 Resolução: 1h Quantidade:', count, 'Resultado por dia:', getProfit(rsiStrategy, candles, 100000, false, '1h'))
 
     rsiStrategy = new RSIStrategy({ periods: 20, startingValues: [], verbose: false })
-    console.log('RSI 20 Resolução: 1h Quantidade: 400', getProfit(rsiStrategy, candles, 100000, false, '1h'))
+    console.log('RSI 20 Resolução: 1h Quantidade:', count, 'Resultado por dia:', getProfit(rsiStrategy, candles, 100000, false, '1h'))
 
-    candles = await getCandles('ETH-BRL', '15m', 400)
+    candles = await getCandles('ETH-BRL', '15m', count)
     rsiStrategy = new RSIStrategy({ periods: 10, startingValues: [], verbose: false })
-    console.log('RSI 10 Resolução: 15m Quantidade: 400', getProfit(rsiStrategy, candles, 100000, false, '15m'))
+    console.log('RSI 10 Resolução: 15m Quantidade:', count, 'Resultado por dia:', getProfit(rsiStrategy, candles, 100000, false, '15m'))
 
     rsiStrategy = new RSIStrategy({ periods: 14, startingValues: [], verbose: false })
-    console.log('RSI 14 Resolução: 15m Quantidade: 400', getProfit(rsiStrategy, candles, 100000, false, '15m'))
+    console.log('RSI 14 Resolução: 15m Quantidade:', count, 'Resultado por dia:', getProfit(rsiStrategy, candles, 100000, false, '15m'))
 
     rsiStrategy = new RSIStrategy({ periods: 20, startingValues: [], verbose: false })
-    console.log('RSI 20 Resolução: 15m Quantidade: 400', getProfit(rsiStrategy, candles, 100000, false, '15m'))
+    console.log('RSI 20 Resolução: 15m Quantidade:', count, 'Resultado por dia:', getProfit(rsiStrategy, candles, 100000, false, '15m'))
 }
-export async function testSMA() {
-    let candles = await getCandles('ETH-BRL', '1d', 400)
+export async function testSMA(count) {
+    let candles = await getCandles('ETH-BRL', '1d', count)
     let smaStrategy = new SMAStrategy({ periods: 5, startingValues: [], verbose: false })
-    console.log('SMA 5 Resolução: 1d Quantidade: 400', getProfit(smaStrategy, candles, 100000, false, '1d'))
+    console.log('SMA 5 Resolução: 1d Quantidade:', count, 'Resultado por dia:', getProfit(smaStrategy, candles, 100000, false, '1d'))
 
     smaStrategy = new SMAStrategy({ periods: 10, startingValues: [], verbose: false })
-    console.log('SMA 10 Resolução: 1d Quantidade: 400', getProfit(smaStrategy, candles, 100000, false, '1d'))
+    console.log('SMA 10 Resolução: 1d Quantidade:', count, 'Resultado por dia:', getProfit(smaStrategy, candles, 100000, false, '1d'))
 
     smaStrategy = new SMAStrategy({ periods: 20, startingValues: [], verbose: false })
-    console.log('SMA 20 Resolução: 1d Quantidade: 400', getProfit(smaStrategy, candles, 100000, false, '1d'))
+    console.log('SMA 20 Resolução: 1d Quantidade:', count, 'Resultado por dia:', getProfit(smaStrategy, candles, 100000, false, '1d'))
 
-    candles = await getCandles('ETH-BRL', '1h', 400)
+    candles = await getCandles('ETH-BRL', '1h', count)
     smaStrategy = new SMAStrategy({ periods: 5, startingValues: [], verbose: false })
-    console.log('SMA 5 Resolução: 1h Quantidade: 400', getProfit(smaStrategy, candles, 100000, false, '1h'))
+    console.log('SMA 5 Resolução: 1h Quantidade:', count, 'Resultado por dia:', getProfit(smaStrategy, candles, 100000, false, '1h'))
 
     smaStrategy = new SMAStrategy({ periods: 10, startingValues: [], verbose: false })
-    console.log('SMA 10 Resolução: 1h Quantidade: 400', getProfit(smaStrategy, candles, 100000, false, '1h'))
+    console.log('SMA 10 Resolução: 1h Quantidade:', count, 'Resultado por dia:', getProfit(smaStrategy, candles, 100000, false, '1h'))
 
     smaStrategy = new SMAStrategy({ periods: 20, startingValues: [], verbose: false })
-    console.log('SMA 20 Resolução: 1h Quantidade: 400', getProfit(smaStrategy, candles, 100000, false, '1h'))
+    console.log('SMA 20 Resolução: 1h Quantidade:', count, 'Resultado por dia:', getProfit(smaStrategy, candles, 100000, false, '1h'))
 
-    candles = await getCandles('ETH-BRL', '15m', 400)
+    candles = await getCandles('ETH-BRL', '15m', count)
     smaStrategy = new SMAStrategy({ periods: 5, startingValues: [], verbose: false })
-    console.log('SMA 5 Resolução: 15m Quantidade: 400', getProfit(smaStrategy, candles, 100000, false, '15m'))
+    console.log('SMA 5 Resolução: 15m Quantidade:', count, 'Resultado por dia:', getProfit(smaStrategy, candles, 100000, false, '15m'))
 
     smaStrategy = new SMAStrategy({ periods: 10, startingValues: [], verbose: false })
-    console.log('SMA 10 Resolução: 15m Quantidade: 400', getProfit(smaStrategy, candles, 100000, false, '15m'))
+    console.log('SMA 10 Resolução: 15m Quantidade:', count, 'Resultado por dia:', getProfit(smaStrategy, candles, 100000, false, '15m'))
 
     smaStrategy = new SMAStrategy({ periods: 20, startingValues: [], verbose: false })
-    console.log('SMA 20 Resolução: 15m Quantidade: 400', getProfit(smaStrategy, candles, 100000, false, '15m'))
+    console.log('SMA 20 Resolução: 15m Quantidade:', count, 'Resultado por dia:', getProfit(smaStrategy, candles, 100000, false, '15m'))
 }
 
 export function getProfit(strategy, candles, startBalance, verbose, resolution = '1d') {

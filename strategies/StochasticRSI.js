@@ -4,8 +4,8 @@ export class StochasticRSIStrategy {
     _stochasticRsi = null
     _verbose = true
     _status = 'NONE'
-    _overbought = 0
-    _oversold = 0
+    _overbought = 80
+    _oversold = 20
     constructor({ periods, rsiPeriods = 14, kPeriod = 3, dPeriod = 3, startingValues, verbose = false, overbought = 80, oversold = 20 }) {
         this._verbose = verbose
         let inputStochasticRSI = {
@@ -16,7 +16,7 @@ export class StochasticRSIStrategy {
             dPeriod: dPeriod,
         }
         this._stochasticRsi = new StochasticRSI(inputStochasticRSI)
-        this._overbought = oversold
+        this._oversold = oversold
         this._overbought = overbought
     }
     proccessCandle(candle) {
@@ -25,9 +25,9 @@ export class StochasticRSIStrategy {
         if (result) {
             let { stochRSI, k, d } = result
             if (stochRSI > this._overbought && this._status != 'NONE') recomendation = 'SELL'
-            else if (stochRSI < this._overbought && this._status != 'LONG') recomendation = 'BUY'
+            else if (stochRSI < this._oversold && this._status != 'LONG') recomendation = 'BUY'
             else recomendation = 'NEUTRAL'
-            if (this._verbose) console.log('RSI Recomendation', recomendation, 'Closing:', candle.close, 'Result:', stochRSI, 'k:', k, 'd:', d)
+            if (this._verbose) console.log('Stochastic RSI Recomendation', recomendation, 'Closing:', candle.close, 'Result:', stochRSI, 'k:', k, 'd:', d)
         } else {
             recomendation = 'NEUTRAL'
         }
