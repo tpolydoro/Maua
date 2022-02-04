@@ -1,4 +1,4 @@
-import { sma, SMA } from 'technicalindicators'
+import { SMA } from 'technicalindicators'
 
 export class SMAStrategy {
     _sma = null
